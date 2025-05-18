@@ -11,6 +11,63 @@
 
 </head>
 
+<style>
+
+.derecha {
+    animation: derecha 3s ease-in-out both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 10%;
+}
+
+.izquierda {
+    animation: izquierda 6s linear both; 
+    transition: opacity 3s , transform 3s ;
+}
+
+
+
+
+
+
+
+@keyframes derecha {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes izquierda {
+    0% {
+       
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes arriba {
+    0% {
+        
+        transform: translateY(200px);
+    }
+    100% {
+        
+        transform: translateY(0);
+    }
+}
+
+
+
+</style>
+
 <body>
 
 
@@ -196,7 +253,7 @@
 
 
 
-    <div id="controls-carousel" class="relative w-full" data-carousel="static">
+    <div id="controls-carousel" class="relative w-full derecha" data-carousel="static">
         <!-- Carousel wrapper -->
         <div id="web" class="relative h-56 overflow-hidden rounded-lg md:h-96">
             <!-- Item 1 -->
@@ -285,7 +342,7 @@
     <!-- Posts -->
 
 
-    <section id="ecommerce" class="bg-white dark:bg-gray-900">
+    <section id="ecommerce" class=" bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
             <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Edición Multimedia
@@ -296,7 +353,7 @@
             <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
 
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-                    <a onclick="playVideo(event)">
+                    <a class="derecha" onclick="playVideo(event)">
                         <video class="h-[50px] w-[50px] rounded-lg cursor-pointer" src="./public/images/CasaVenta.mp4"
                             controls muted></video>
                     </a>
@@ -315,7 +372,7 @@
 
 
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-                    <a>
+                    <a class="derecha">
                         <video class="h-[100px]  max-w-full rounded-lg cursor-pointer"
                             src="./public/images/Hamburguer.mp4" controls muted>
                         </video>
@@ -382,10 +439,10 @@
 
 
 
-    <section class="bg-white dark:bg-gray-900">
+    <section class="derecha bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
-            <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Ecommerce</h2>
+            <div class=" mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+                <h2 class=" mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Ecommerce</h2>
                 <p class="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Estando a cargo de CRM's como
                     Simla,Kommo y Shopify tiene funciones de CRM he hecho monitoreo y reportes(se puede hacer click en
                     cada imágen para ampliarla)</p>
@@ -555,6 +612,15 @@
         </div>
     </div>
 
+
+
+    <script>
+        document.querySelectorAll('.derecha, .izquierda').forEach(img=>{
+            img.addEventListener('animationend',()=>{
+                img.style.animation="none";
+            });
+        })
+    </script>
 
 
 
