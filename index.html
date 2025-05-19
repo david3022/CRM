@@ -628,10 +628,7 @@
 
     <div class="w-full bg-yellow-500 text-white text-center py-6">
         <p class="text-lg font-bold">
-            Adicionalmente trabajo en la implementación de agentes de inteligencia artificial para garantizar una
-            atención al cliente oportuna.
-            Como ejemplo, dejo uno sencillo a la derecha de esta web; lo iré actualizando conforme contratemos el
-            servicio completo de la API.
+            Puedes probar el chatbot que programé en el boton de la derecha,aunque demora un poco en responder,puede usarse sin limites
         </p>
     </div>
 
@@ -671,15 +668,17 @@
     </footer>
 
 
+    
+
+
+
+
+
     <button id="chatbot-toggle"
-        class="fixed bottom-44 right-4 w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg z-99999">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.54-3.36 19.51 19.51 0 0 1-6-6 19.79 19.79 0 0 1-3.36-8.54A2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72 12.07 12.07 0 0 0 .69 2.81 2 2 0 0 1-.45 2.11l-2 2a16 16 0 0 0 6 6l2-2a2 2 0 0 1 2.11-.45 12.07 12.07 0 0 0 2.81.69A2 2 0 0 1 22 16.92z" />
-        </svg>
-        
-    </button>
+    class="fixed bottom-44 right-4 w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg z-99999 text-4xl">
+    🤖
+</button>
+
 
 
     <div id="chatbot-container"
@@ -687,20 +686,111 @@
 
         <div class="p-4 bg-gray-800 text-white font-bold">Chatbot</div>
         <div id="chatbox" class="flex-1 p-4 overflow-y-auto text-sm"></div>
-        <button id="chatbot-close" class="absolute top-2 right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-lg">
+        <button id="chatbot-close"
+            class="absolute top-2 right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-lg">
             ✖
         </button>
-    
-       
+
+
         <div class="p-2 flex">
             <input id="userInput" type="text" class="flex-1 p-2 border rounded-md" placeholder="Escribe aquí...">
-            <button onclick="sendMessage()" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md">Enviar</button>
+            <button id="sendButton" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md">Enviar</button>
+
+
         </div>
-        <!-- <div class="p-2 flex">
-            <input id="userInput" type="text" class="flex-1 p-2 border rounded-md" placeholder="Escribe aquí...">
-            <button onclick="sendMessage()" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md">Enviar</button>
-        </div> -->
+
     </div>
+
+
+    <script>
+
+        async function sendMessage() {
+            let inputField = document.getElementById("userInput");
+            let userMessage = inputField.value.trim();
+            let chatbox = document.getElementById("chatbox");
+        
+            if (userMessage !== "") {
+                chatbox.innerHTML += `<p class='bg-gray-200 p-2 rounded-md mt-1'>👤 ${userMessage}</p>`;
+                inputField.value = "";
+        
+                try {
+                    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": "Bearer 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",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            model: "deepseek/deepseek-r1:free", // ✅ Modelo correcto
+                            messages: [
+                                { role: "system", content: 
+                                
+        "Tu trabajo es saludar,en el primer mensaje comentar que el programador David Fajardo no se encuentra disponible pero se le puede contactar al wa.me/58 414 2282505, adicionalmente en los demas mensajes puedes responder cualquier otra pregunta respetuosa que te hagan de manera amable .Si te preguntan tu nombre o qué eres,debes responder que eres tu nombre es Jarvis, un chat bot creado por el programador David Fajardo" },
+        
+                                { role: "user", content: userMessage }
+                            ],
+                            temperature: 0.7,
+                            max_tokens: 500
+                        })
+                    });
+        
+                    const data = await response.json();
+                    console.log("Respuesta AI:", data);
+        
+                    const aiResponse = data.choices?.[0]?.message?.content || "🤖 Demoré mucho en responder,por favor escribe de nuevo";
+                    chatbox.innerHTML += `<p class='bg-blue-500 text-white p-2 rounded-md mt-1'>🤖 ${aiResponse}</p>`;
+        
+                } catch (error) {
+                    console.error("Error al enviar el mensaje:", error);
+                    chatbox.innerHTML += `<p class='bg-red-500 text-white p-2 rounded-md mt-1'>❌ Error en la conexión</p>`;
+                }
+            }
+        }
+        
+        
+            
+                // ✅ Asegurar que la función se ejecuta correctamente después de que el DOM cargue
+                document.addEventListener("DOMContentLoaded", function () {
+                    let chatbotContainer = document.getElementById("chatbot-container");
+                    let chatbotToggle = document.getElementById("chatbot-toggle");
+                    let chatbotClose = document.getElementById("chatbot-close");
+                    let inputField = document.getElementById("userInput");
+                    let sendButton = document.getElementById("sendButton");
+            
+                    if (chatbotToggle) {
+                        chatbotToggle.addEventListener("click", function () {
+                            chatbotContainer.classList.toggle("hidden");
+                        });
+                    }
+            
+                    if (chatbotClose) {
+                        chatbotClose.addEventListener("click", function () {
+                            chatbotContainer.classList.add("hidden");
+                        });
+                    }
+            
+                    if (sendButton) {
+                        sendButton.addEventListener("click", sendMessage);
+                    } else {
+                        console.error("❌ Error: 'sendButton' no encontrado en el DOM.");
+                    }
+            
+                    if (inputField) {
+                        inputField.addEventListener("keypress", function (event) {
+                            if (event.key === "Enter") {
+                                event.preventDefault();
+                                sendMessage();
+                            }
+                        });
+                    }
+                });
+        
+        
+            </script>
+            
+
+
+   
 
 
 
@@ -714,40 +804,7 @@
 
 
 
-    <script>
-        document.getElementById("chatbot-toggle").addEventListener("click", function () {
-            document.getElementById("chatbot-container").classList.toggle("hidden");
-        });
-
-        function sendMessage() {
-            let inputField = document.getElementById("userInput");
-            let userMessage = inputField.value.trim();
-            let chatbox = document.getElementById("chatbox");
-
-            if (userMessage !== "") {
-                chatbox.innerHTML += `<p class='bg-gray-200 p-2 rounded-md mt-1'>👤 ${userMessage}</p>`;
-                inputField.value = "";
-
-                // Respuesta automática básica
-                let botResponse = "Actualmente la Api ha alcanzado el numero máximo de mensajes gratuitos permitidos. Si deseas comunicarte con David Fajardo haz click en el boton contactar al final de esta pagina web";
-                if (userMessage.toLowerCase().includes("horario")) {
-                    botResponse = "Nuestro horario de atención es de 8AM a 6PM.";
-                } else if (userMessage.toLowerCase().includes("precio")) {
-                    botResponse = "Puedes consultar los precios en nuestra tienda online.";
-                }
-
-                setTimeout(() => {
-                    chatbox.innerHTML += `<p class='bg-blue-500 text-white p-2 rounded-md mt-1'>🤖 ${botResponse}</p>`;
-                }, 1000);
-            }
-        }
-
-
-
-        document.getElementById("chatbot-close").addEventListener("click", function () {
-    document.getElementById("chatbot-container").classList.add("hidden"); // Cierra el chatbot al hacer click
-});
-    </script>
+   
 
 
 
