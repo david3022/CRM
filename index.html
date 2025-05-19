@@ -76,7 +76,7 @@
 
     @keyframes derecha {
         0% {
-            opacity: 0;
+            opacity: 1;
             transform: translateX(100px);
         }
 
@@ -346,7 +346,7 @@
             class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
             data-carousel-prev>
             <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-700 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-700 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                 <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -356,10 +356,10 @@
             </span>
         </button>
         <button type="button"
-            class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+            class="absolute top-0 right-16 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
             data-carousel-next>
             <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-700 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-700 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                 <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -397,7 +397,7 @@
             <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
 
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-                    <a class="derecha" onclick="playVideo(event)">
+                    <a onclick="playVideo(event)">
                         <video class="h-[50px] w-[50px] rounded-lg cursor-pointer" src="./public/images/CasaVenta.mp4"
                             controls muted></video>
                     </a>
@@ -416,18 +416,18 @@
 
 
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-                    <a class="derecha">
+                    <a >
                         <video class="h-[100px]  max-w-full rounded-lg cursor-pointer"
                             src="./public/images/Hamburguer.mp4" controls muted>
                         </video>
                     </a>
                     <div class="p-5">
                         <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            <a>Video Hamburguesa</a>
+                            <a>Reels</a>
                         </h3>
 
-                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Video corto para redes sociales
-                            hecho con templates de Canva y Adobe Express bastante llamativo</p>
+                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Manejo herramientas de Adobe para  publicidad en redes sociales
+                             </p>
 
                     </div>
                 </div>
@@ -465,7 +465,7 @@
                             <a href="CompraJuegos.Online">CompraJuegos.Online</a>
                         </h3>
 
-                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Reel de Instagram para pequeño
+                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Comercial para un
                             Ecommerce de venta de videjuegos,además de edición de video y sincronización con música se
                             utilizaron voces hechas con inteligencia artificial y se le añadió dramatismo</p>
 
@@ -500,7 +500,7 @@
                 <!-- Primer elemento -->
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                     <div class="relative group">
-                        <a href="#" onclick="expandImage(event, 'modal1')" class="block">
+                        <a  onclick="expandImage(event, 'modal1')" class="block">
                             <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                                 src="/public/images/Inventario.png" alt="Inventario">
                             <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
@@ -516,7 +516,7 @@
     
                     <div class="p-5">
                         <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            <a href="#">Inventario</a>
+                            <a >Inventario</a>
                         </h3>
                     </div>
                 </div>
@@ -524,7 +524,7 @@
                 <!-- Segundo elemento -->
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                     <div class="relative group">
-                        <a href="#" onclick="expandImage(event, 'modal2')" class="block">
+                        <a  onclick="expandImage(event, 'modal2')" class="block">
                             <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                                 src="/public/images/Finanzas.jpg" alt="Finanzas">
                             <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
@@ -540,7 +540,7 @@
     
                     <div class="p-5">
                         <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            <a href="#">Finanzas</a>
+                            <a >Finanzas</a>
                         </h3>
                     </div>
                 </div>
@@ -548,7 +548,7 @@
                 <!-- Tercer elemento -->
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                     <div class="relative group">
-                        <a href="#" onclick="expandImage(event, 'modal3')" class="block">
+                        <a  onclick="expandImage(event, 'modal3')" class="block">
                             <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                                 src="/public/images/Reporte.png" alt="Reporte">
                             <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
@@ -572,7 +572,7 @@
                 <!-- Cuarto elemento -->
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                     <div class="relative group">
-                        <a href="#" onclick="expandImage(event, 'modal4')" class="block">
+                        <a  onclick="expandImage(event, 'modal4')" class="block">
                             <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                                 src="/public/images/Tiempos.png" alt="Tiempos">
                             <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
