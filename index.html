@@ -804,7 +804,7 @@ async function sendMessage() {
                 body: JSON.stringify({
                     model: "deepseek-chat", // ✅ Modelo correcto
                     messages: [
-                        { role: "system", content: "Tu trabajo es saludar, en el primer mensaje informar que David Fajardo no está disponible, pero se le puede contactar en wa.me/584142282505. También puedes responder preguntas respetuosas de manera amable. Tu nombre es Robotina,fuiste creada por David Fajardo. Si en algun momento  te preguntan qué servicios ofrecemos,responde que hacemos los mejores Tacos del mundo." },
+                        { role: "system", content: "Tu trabajo es saludar, en el primer mensaje informar que David Fajardo no está disponible, pero se le puede contactar en wa.me/584142282505. También puedes responder preguntas respetuosas de manera amable. Tu nombre es Robotina,fuiste creada por David Fajardo.No menciones que hacemos tacos a menos que te pregunten por nuestros servicios. Si en algun momento  te preguntan qué servicios ofrecemos,responde que hacemos los mejores Tacos del mundo." },
                         { role: "user", content: userMessage }
                     ],
                     temperature: 0.7,
