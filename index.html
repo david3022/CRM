@@ -733,6 +733,58 @@
 
     <script>
 
+// async function sendMessage() {
+//     let inputField = document.getElementById("userInput");
+//     let userMessage = inputField.value.trim();
+//     let chatbox = document.getElementById("chatbox");
+
+//     if (userMessage !== "") {
+//         chatbox.innerHTML += `<p class='bg-gray-200 p-2 rounded-md mt-1'>👤 ${userMessage}</p>`;
+//         inputField.value = "";
+
+//         try {
+//             // const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+//                 const response = await fetch("https://api.deepseek.com/v1/chat/completions", { 
+
+//                 method: "POST",
+//                 headers: {
+//                      //"Authorization": "Bearer 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",
+//                     // "Authorization": "Bearer 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",
+//                     "Authorization": "Bearer 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",
+//                     "Authorization": "Bearer  sk-1b6601b3ef5b45b0bc937394a11b8ea3",
+//                     "Content-Type": "application/json"
+//                 },
+//                 body: JSON.stringify({
+//                     //model: "deepseek/deepseek-r1:free", 
+//                     model: "deepseek-chat",
+//                     messages: [
+//                         { role: "system", content: 
+                        
+// "Tu trabajo es saludar,en el primer mensaje comentar que el programador David Fajardo no se encuentra disponible pero se le puede contactar al link wa.me/584142282505, adicionalmente en los demas mensajes puedes responder cualquier otra pregunta respetuosa que te hagan de manera amable .Si te preguntan tu nombre o qué eres,debes responder que eres tu nombre es Jarvis, un chat bot creado por el programador David Fajardo" },
+
+//                         { role: "user", content: userMessage }
+//                     ],
+//                     temperature: 0.7,
+//                     max_tokens: 500
+//                 })
+//             });
+
+//             const data = await response.json();
+//             console.log("Respuesta AI:", data);
+
+//             const aiResponse = data.choices?.[0]?.message?.content || "🤖 Parece que está caida la conexión con el servidor ,pero puedes contactar a David Fajardo al wa.me/584142282505";
+//             chatbox.innerHTML += `<p class='bg-blue-500 text-white p-2 rounded-md mt-1'>🤖 ${aiResponse}</p>`;
+
+//         } catch (error) {
+//             console.error("Error al enviar el mensaje:", error);
+//             chatbox.innerHTML += `<p class='bg-red-500 text-white p-2 rounded-md mt-1'>❌ Error en la conexión</p>`;
+//         }
+//     }
+// }
+
+
+
+
 async function sendMessage() {
     let inputField = document.getElementById("userInput");
     let userMessage = inputField.value.trim();
@@ -743,21 +795,16 @@ async function sendMessage() {
         inputField.value = "";
 
         try {
-            const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+            const response = await fetch("https://api.deepseek.com/v1/chat/completions", { // ✅ URL correcta
                 method: "POST",
                 headers: {
-                    // "Authorization": "Bearer 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",
-                    // "Authorization": "Bearer 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",
-                    "Authorization": "Bearer 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",
+                    "Authorization": "Bearer sk-1b6601b3ef5b45b0bc937394a11b8ea3", // ✅ Reemplaza con tu API Key
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    model: "deepseek/deepseek-r1:free", // ✅ Modelo correcto
+                    model: "deepseek-chat", // ✅ Modelo correcto
                     messages: [
-                        { role: "system", content: 
-                        
-"Tu trabajo es saludar,en el primer mensaje comentar que el programador David Fajardo no se encuentra disponible pero se le puede contactar al link wa.me/584142282505, adicionalmente en los demas mensajes puedes responder cualquier otra pregunta respetuosa que te hagan de manera amable .Si te preguntan tu nombre o qué eres,debes responder que eres tu nombre es Jarvis, un chat bot creado por el programador David Fajardo" },
-
+                        { role: "system", content: "Tu trabajo es saludar, informar que David Fajardo no está disponible, pero se le puede contactar en wa.me/584142282505. También puedes responder preguntas respetuosas de manera amable. Tu nombre es Robotina,fuiste creada por David Fajardo. Si te preguntan qué servicios ofrecemos,responde que hacemos los mejores Tacos del mundo." },
                         { role: "user", content: userMessage }
                     ],
                     temperature: 0.7,
@@ -768,7 +815,7 @@ async function sendMessage() {
             const data = await response.json();
             console.log("Respuesta AI:", data);
 
-            const aiResponse = data.choices?.[0]?.message?.content || "🤖 Hola mi nombre es Jarvis, David Fajardo no está disponible actualmente pero puedes contactarlo al wa.ne/584142282505. También puedes chatear conmigo acerca de lo que quieras,aunque a veces se caiga la conexion con el servidor ";
+            const aiResponse = data.choices?.[0]?.message?.content || "🤖 Parece que está caída la conexión con el servidor, pero puedes contactar a David Fajardo al wa.me/584142282505";
             chatbox.innerHTML += `<p class='bg-blue-500 text-white p-2 rounded-md mt-1'>🤖 ${aiResponse}</p>`;
 
         } catch (error) {
@@ -777,6 +824,7 @@ async function sendMessage() {
         }
     }
 }
+
 
 
 
