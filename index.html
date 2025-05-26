@@ -791,6 +791,7 @@ async function sendMessage() {
     let inputField = document.getElementById("userInput");
     let userMessage = inputField.value.trim();
     let chatbox = document.getElementById("chatbox");
+    let apiKey = "sk-1b6601b3ef5b45b0bc937394a11b8ea3"
 
     if (userMessage !== "") {
         chatbox.innerHTML += `<p class='bg-gray-200 p-2 rounded-md mt-1'>👤 ${userMessage}</p>`;
